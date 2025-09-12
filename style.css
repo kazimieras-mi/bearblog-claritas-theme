@@ -5,14 +5,14 @@
     --common-element-size-2x: calc(var(--common-element-size) * 2);
 
     --content-width: calc(var(--common-element-size) * 45);
-    --content-min-width: calc(var(--common-element-size) * 25);
+    --content-min-width: calc(var(--common-element-size) * 15);
     --sidebar-width: calc(var(--common-element-size) * 10);
     --sidebar-left-margin: calc(50vw - (var(--content-width) / 2) - var(--sidebar-width) - (var(--common-element-size) * 2));
 
     --text-font-family: 'Inter', 'DIN', 'Helvetica', 'Arial';
     --text-font-size: var(--common-element-size);
     --text-blog-name-size: calc(var(--text-font-size) * 1.5);
-    --text-title-size: calc(var(--text-font-size) * 4);
+    --text-title-size: calc(var(--text-font-size) * 3);
     --text-spacing: calc(var(--common-element-size) / 20);
     --text-line-height: calc(1em + var(--common-element-size));
     --text-line-height-scaleable: 1.8em;
@@ -21,6 +21,12 @@
     --text-color-opposite: white;
     --common-color-shade: rgba(128, 128, 128, 0.075);
     --common-color-line: rgba(128, 128, 128, 0.3);
+}
+
+@media (min-width: 1400px) {
+    :root {
+        --text-title-size: calc(var(--text-font-size) * 4);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +92,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: var(--common-element-size-2x);
     line-height: var(--text-line-height);
     font-weight: 900;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
 }
 
 main h1:first-of-type {
@@ -120,10 +130,12 @@ img, video, iframe, table, .highlight, .framed {
 
 /* Tables */
 table {
+    display: block;
     width: 100%;
     border: 1px solid var(--common-color-line);
     border-collapse: separate;
     border-spacing: 0;
+    overflow-x: auto;
 }
 
 table tr:nth-child(2n), thead {
@@ -196,6 +208,19 @@ mark, .mark {
     border: 1px solid var(--common-color-line);
     background-color: var(--common-color-shade);
     padding: 0.1em 0.25em;
+}
+
+/* Blog post list. */
+ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+}
+ul.blog-posts li {
+    display: flex;
+}
+
+ul.blog-posts li span {
+    flex: 0 0 130px;
 }
 
 /* Big Screen Ergonomics */
