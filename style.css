@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --common-element-size: 16px;
+    --common-element-size-2x: calc(var(--common-element-size) * 2);
+
+    --content-width: calc(var(--common-element-size) * 45);
+    --content-min-width: calc(var(--common-element-size) * 25);
+    --sidebar-width: calc(var(--common-element-size) * 10);
+    --sidebar-left-margin: calc(50vw - (var(--content-width) / 2) - var(--sidebar-width) - (var(--common-element-size) * 2));
+
+    --text-font-family: 'Inter', 'DIN', 'Helvetica', 'Arial';
+    --text-font-size: var(--common-element-size);
+    --text-blog-name-size: calc(var(--text-font-size) * 1.5);
+    --text-title-size: calc(var(--text-font-size) * 4);
+    --text-spacing: calc(var(--common-element-size) / 20);
+    --text-line-height: calc(1em + var(--common-element-size));
+    --text-line-height-scaleable: 1.8em;
+
+    --text-color: black;
+    --text-color-opposite: white;
+    --common-color-shade: rgba(128, 128, 128, 0.075);
+    --common-color-line: rgba(128, 128, 128, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: white;
+        --text-color-opposite: #171717;
+    }
+
+    img.inverting {
+        filter: invert(1);
+    }
+}
+
+@media print {
+    :root {
+        --common-element-size: 12px;
+    }
+}
+
+/* Typography & Core Layout */
+body {
+    background-color: var(--text-color-opposite);
+    color: var(--text-color);
+    font-family: var(--text-font-family), sans-serif;
+    font-size: var(--text-font-size);
+    line-height: var(--text-line-height);
+    word-spacing: var(--text-spacing);
+    min-width: var(--content-min-width);
+    max-width: var(--content-width);
+    margin: var(--common-element-size-2x) auto;
+    padding: 0 var(--common-element-size-2x);
+}
+
+/* Common Elements */
+p {
+    margin-top: var(--common-element-size);
+}
+
+hr {
+    margin: var(--common-element-size) 0;
+    border: 0;
+    border-top: 1px solid var(--common-color-line);
+}
+
+/* Links */
+a {
+    display: inline;
+    padding: 0.1em 0.25em;
+    text-decoration: none;
+    border-bottom: 2px solid var(--text-color);
+
+    color: var(--text-color);
+    background-color: var(--text-color-opposite);
+}
+
+a:hover {
+    color: var(--text-color-opposite);
+    background-color: var(--text-color);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: var(--common-element-size-2x);
+    line-height: var(--text-line-height);
+    font-weight: 900;
+}
+
+main h1:first-of-type {
+    font-size: var(--text-title-size);
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.title h1 {
+    font-size: var(--text-blog-name-size);
+    margin: 0;
+}
+
+/* Embeddables */
+img, video, iframe, table, .highlight, .framed {
+    max-width: 100%;
+    margin-top: var(--common-element-size);
+}
+
+.highlight {
+    font-size: calc(var(--text-font-size) * 0.8);
+    line-height: var(--text-line-height-scaleable);
+    padding: var(--common-element-size);
+}
+
+.highlight, .highlight pre {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: pre-wrap;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border: 1px solid var(--common-color-line);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table tr:nth-child(2n), thead {
+    background-color: var(--common-color-shade);
+}
+
+td, th {
+    padding: var(--common-element-size);
+    min-width: calc(var(--common-element-size) * 4);
+}
+
+thead th:empty {
+    display:none;
+}
+
+table:has(th:not(:empty)) td {
+    border-top: 1px solid var(--common-color-line);
+}
+
+td, th {
+    border-left: 1px solid var(--common-color-line);
+}
+
+td, th {
+    text-align: left;
+    vertical-align: top;
+}
+
+td:first-child, th:first-child {
+    border-left: none;
+}
+
+/* Images */
+img.small-image {
+    max-width: calc(var(--common-element-size) * 8);
+}
+
+img.tiny-image {
+    max-width: calc(var(--common-element-size) * 4);
+}
+
+/* Title */
+a.title, a.title:hover {
+    display: block;
+    border: inherit;
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Utilities */
+.center {
+    text-align: center;
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.invisible {
+    display: none;
+}
+
+mark, .mark {
+    color: var(--text-color);
+    display: inline-block;
+    border: 1px solid var(--common-color-line);
+    background-color: var(--common-color-shade);
+    padding: 0.1em 0.25em;
+}
+
+/* Big Screen Ergonomics */
+@media (min-width: 1400px) {
+    nav {
+        position: fixed;
+        top: var(--common-element-size-2x);
+        left: var(--sidebar-left-margin);
+        width: var(--sidebar-width);
+        height: calc(100vh - (var(--common-element-size-2x) * 2));
+        overflow-y: auto;
+    }
+
+    nav * {
+        display: block;
+        margin-top: 0;
+    }
+
+    nav a {
+        border: none;
+    }
+}
+
+/* Printing Ergonomics */
+@media print {
+    body, .highlight, .highlight pre {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        hyphens: auto;
+    }
+
+    .highlight, .highlight pre {
+        white-space: pre-wrap;
+        line-height: 1.6em;
+    }
+
+    tr, th, thead, h1, h2, h3 {
+        break-inside: avoid-page;
+    }
+
+    h1::after, h2::after, h3::after {
+        content: "";
+        display: block;
+        height: 300px;
+        margin-bottom: -300px;
+    }
+
+    nav, #upvote-form small {
+        display: none;
+    }
+
+    .invisible-on-print {
+        display: none;
+    }
+}
