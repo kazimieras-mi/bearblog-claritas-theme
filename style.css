@@ -21,6 +21,9 @@
     --text-color-opposite: white;
     --common-color-shade: rgba(128, 128, 128, 0.075);
     --common-color-line: rgba(128, 128, 128, 0.3);
+
+    --infobox-background-color: rgba(114, 188, 255, 0.25);
+    --infobox-border-color: rgba(114, 188, 255, 0.6);
 }
 
 @media (min-width: 1400px) {
@@ -202,12 +205,13 @@ a.title, a.title:hover {
     display: none;
 }
 
-mark, .mark {
+p mark, .infobox-inline {
     color: var(--text-color);
     display: inline-block;
-    border: 1px solid var(--common-color-line);
-    background-color: var(--common-color-shade);
-    padding: 0.1em 0.25em;
+    background-color: var(--infobox-background-color);
+    border: 1px solid var(--infobox-border-color);
+    padding: 1em;
+    margin: 0.05em;
 }
 
 /* Blog post list. */
