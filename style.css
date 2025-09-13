@@ -61,6 +61,9 @@ body {
     max-width: var(--content-width);
     margin: var(--common-element-size-2x) auto;
     padding: 0 var(--common-element-size-2x);
+
+    /* Webkit fix for changing viewport sizes leading to different text size. */
+    -webkit-text-size-adjust: 100%;
 }
 
 /* Common Elements */
