@@ -10,16 +10,15 @@ A minimalistic and accessible theme for [Bearblog](https://bearblog.dev/).
     - Light/dark modes
     - Small/large screens
     - Printing
-- Hacks
 
 ## Screenshots
 ![Main](screenshots/001.png)
 ![Post](screenshots/002.png)
 ![Dark Mode](screenshots/003.png)
 ![Tables](screenshots/004.png)
-![Print](screenshots/008.png)
+![Print](screenshots/005.png)
 
-| ![Mobile Main](screenshots/005.png) | ![Mobile Post](screenshots/006.png) | ![Mobile Dark](screenshots/007.png) |
+| ![Mobile Main](screenshots/006.png) | ![Mobile Post](screenshots/007.png) | ![Mobile Dark](screenshots/008.png) |
 |-------------------------------------|-------------------------------------|-------------------------------------|
 
 
@@ -28,17 +27,18 @@ Open [style.css](https://raw.githubusercontent.com/kazimieras-mi/bearblog-clarit
 
 Remember to back up your existing theme.
 
-## Hacks
-### Image Sizes
-Embed images with `<img class='small-image' src='...' />` or `<img class='tiny-image' src='...' />` to get smaller image sizes that still follow geometric rules of the theme.
+## Image Hacks
+Bearblog supports `<img src='...' />` tags for image embedding. You can use the following image classes with this theme:
+- `small-image`: makes the image small
+- `tiny-image`: makes the image tiny
+- `inverting`: inverts the image colors in dark mode
 
-### Image Dark Mode
-If the image is embedded with a class `inverting`, its colors will be inverted in dark mode. This is useful for schematics.
+## Headless Table Hack
+Add a headless table with the following Markdown code, and the header row won't display empty – it will not display at all:
+```
+||||
+|------|------|------|
+|Cell A|Cell B|Cell C|
+```
 
-### Utility Classes
-Class `center` centers the element. `block` makes it a block element (the text will appear above and below it). `inline` does the opposite. `invisible` hides the element, `invisible-on-print` hides an element in print only.
-
-### Infobox
-Info boxes can be created with highlights: `==Info Box Text==`.
-
-![Infobox](screenshots/Infobox.png)
+Enjoy!
