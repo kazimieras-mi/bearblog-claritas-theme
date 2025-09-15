@@ -79,13 +79,11 @@ hr {
 
 /* Links */
 a {
-    display: inline;
-    padding: 0.1em 0.25em;
-    text-decoration: none;
+    padding: 0.1em;
     border-bottom: 2px solid var(--text-color);
 
     color: var(--text-color);
-    background-color: var(--text-color-opposite);
+    text-decoration-color: transparent; /* For compatibility, keep decoration but hide it. */
 }
 
 a:hover {
@@ -231,7 +229,7 @@ ul.blog-posts li span {
 }
 
 /* Big Screen Ergonomics */
-@media (min-width: 1400px) {
+@media (width > 1400px) {
     nav {
         position: fixed;
         top: var(--common-element-size-2x);
@@ -243,7 +241,8 @@ ul.blog-posts li span {
 
     nav * {
         display: block;
-        margin-top: 0;
+        margin: 0;
+        padding: 0.25em;
     }
 
     nav a {
