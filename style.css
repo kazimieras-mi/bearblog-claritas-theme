@@ -126,7 +126,7 @@ img:not(:first-child), video:not(:first-child), iframe:not(:first-child), table:
 .highlight {
     font-size: calc(var(--text-font-size) * 0.8);
     line-height: var(--text-line-height-scaleable);
-    padding: var(--common-element-size);
+    padding: var(--common-element-size-05x);
 }
 
 .highlight, .highlight pre {
@@ -201,26 +201,33 @@ a.title, a.title:hover {
     display: none;
 }
 
-mark, .infobox {
+mark {
     color: var(--text-color);
     display: inline-block;
     background-color: var(--infobox-background-color);
     border: 1px solid var(--infobox-border-color);
-    padding: 1em;
+    padding: var(--common-element-size-05x);
     margin: 0.05em;
 }
 
 /* Blog post list. */
 ul.blog-posts {
-    list-style-type: none;
-    padding: unset;
+    padding: 0;
+    list-style: none;
 }
+
 ul.blog-posts li {
-    display: flex;
+    display: table;
 }
 
 ul.blog-posts li span {
-    flex: 0 0 130px;
+    display: table-cell;
+    padding: 0;
+    min-width: calc(var(--common-element-size) * 8);
+}
+
+ul.blog-posts li a {
+    display: inline;
 }
 
 /* Big Screen Ergonomics */
@@ -238,25 +245,17 @@ ul.blog-posts li span {
         display: block;
         margin: 0;
         padding: 0.25em;
-    }
-
-    nav a {
         border: none;
     }
 }
 
 /* Printing Ergonomics */
 @media print {
-    body, .highlight, .highlight pre {
+    body {
         word-break: break-word;
         overflow-wrap: break-word;
         white-space: normal;
         hyphens: auto;
-    }
-
-    .highlight, .highlight pre {
-        white-space: pre-wrap;
-        line-height: 1.6em;
     }
 
     tr, th, thead, h1, h2, h3 {
@@ -266,15 +265,11 @@ ul.blog-posts li span {
     h1::after, h2::after, h3::after {
         content: "";
         display: block;
-        height: 300px;
-        margin-bottom: -300px;
+        height: 2cm;
+        margin-bottom: -2cm;
     }
 
-    nav, #upvote-form small {
-        display: none;
-    }
-
-    .invisible-on-print {
+    nav, #upvote-form small, .invisible-on-print {
         display: none;
     }
 }
