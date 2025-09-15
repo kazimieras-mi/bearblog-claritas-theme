@@ -3,6 +3,7 @@
 :root {
     --common-element-size: 16px;
     --common-element-size-2x: calc(var(--common-element-size) * 2);
+    --common-element-size-05x: calc(var(--common-element-size) / 2);
 
     --content-width: calc(var(--common-element-size) * 45);
     --content-min-width: calc(var(--common-element-size) * 15);
@@ -116,6 +117,9 @@ main h1:first-of-type {
 /* Embeddables */
 img, video, iframe, table, .highlight, .framed {
     max-width: 100%;
+}
+
+img:not(:first-child), video:not(:first-child), iframe:not(:first-child), table:not(:first-child), .highlight:not(:first-child), .framed:not(:first-child) {
     margin-top: var(--common-element-size);
 }
 
@@ -134,42 +138,33 @@ img, video, iframe, table, .highlight, .framed {
 
 /* Tables */
 table {
-    display: block;
-    width: 100%;
-    border: 1px solid var(--common-color-line);
+    display: table;
     border-collapse: separate;
     border-spacing: 0;
+
+    width: 100%;
     overflow-x: auto;
+
+    border-bottom: 1px solid var(--common-color-line);
+    border-right: 1px solid var(--common-color-line);
 }
 
-table tr:nth-child(2n), thead {
-    background-color: var(--common-color-shade);
-}
-
-td, th {
-    padding: var(--common-element-size);
-    min-width: calc(var(--common-element-size) * 4);
-}
-
-thead th:empty {
-    display:none;
-}
-
-table:has(th:not(:empty)) td {
+th, td {
+    padding: var(--common-element-size-05x);
     border-top: 1px solid var(--common-color-line);
-}
-
-td, th {
     border-left: 1px solid var(--common-color-line);
 }
 
-td, th {
-    text-align: left;
+tr:nth-child(2n), th {
+    background-color: var(--common-color-shade);
+}
+
+td {
     vertical-align: top;
 }
 
-td:first-child, th:first-child {
-    border-left: none;
+th:empty {
+    display: none;
 }
 
 /* Images */
