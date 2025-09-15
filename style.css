@@ -1,33 +1,47 @@
+/**
+ * Theme Name: Claritas
+ * Theme URI: https://github.com/kazimieras-mi/bearblog-claritas-theme
+ * Description: A minimalist responsive theme for Bear Blog.
+ * Version: 1.0.0
+ * Author: Kazimieras Mikelis
+ * Author URI: https://mikelis.net/
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/* Config */
+:root {
+    --text-font-family: 'Inter', 'Verdana';
+    --light-theme-text-color: black;
+    --light-theme-text-color-opposite: white;
+    --dark-theme-text-color: white;
+    --dark-theme-text-color-opposite: #171717;
+}
+
+/* Internal Variables */
 :root {
     --common-element-size: 16px;
     --common-element-size-2x: calc(var(--common-element-size) * 2);
     --common-element-size-05x: calc(var(--common-element-size) / 2);
-    --common-color-shade: rgba(128, 128, 128, 0.075);
+    --common-color-shade: rgba(128, 128, 128, 0.05);
     --common-color-line: rgba(128, 128, 128, 0.3);
-
     --content-width: calc(var(--common-element-size) * 45);
     --content-min-width: calc(var(--common-element-size) * 15);
-
     --sidebar-width: calc(var(--common-element-size) * 10);
     --sidebar-left-margin: calc(50vw - (var(--content-width) / 2) - var(--sidebar-width) - (var(--common-element-size) * 2));
-
-    --text-font-family: 'Inter', 'Verdana';
-    --text-color: black;
-    --text-color-opposite: white;
+    --text-color: var(--light-theme-text-color);
+    --text-color-opposite: var(--light-theme-text-color-opposite);
     --text-font-size: var(--common-element-size);
     --text-blog-name-size: calc(var(--text-font-size) * 1.5);
     --text-title-size: calc(var(--text-font-size) * 3);
     --text-spacing: calc(var(--common-element-size) / 20);
     --text-line-height: calc(1em + var(--common-element-size));
     --text-line-height-scaleable: 1.8em;
-
     --infobox-background-color: rgba(114, 188, 255, 0.25);
     --infobox-border-color: rgba(114, 188, 255, 0.6);
 }
 
-@media (width > 1200px) {
+@media (min-width: 1200px) {
     :root {
         --text-title-size: calc(var(--text-font-size) * 4);
     }
@@ -35,8 +49,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --text-color: white;
-        --text-color-opposite: #171717;
+        --text-color: var(--dark-theme-text-color);
+        --text-color-opposite: var(--dark-theme-text-color-opposite);
     }
 
     img.inverting {
@@ -50,25 +64,21 @@
     }
 }
 
-/* Typography & Core Layout */
+/* Common Elements */
 body {
-    background-color: var(--text-color-opposite);
     color: var(--text-color);
     font-family: var(--text-font-family), sans-serif;
     font-size: var(--text-font-size);
     line-height: var(--text-line-height);
     word-spacing: var(--text-spacing);
+    background-color: var(--text-color-opposite);
     min-width: var(--content-min-width);
     max-width: var(--content-width);
-    margin: var(--common-element-size-2x) auto;
     padding: 0 var(--common-element-size-2x);
-
-    /* Webkit fix for changing viewport sizes leading to different text size. */
-    -webkit-text-size-adjust: 100%;
+    margin: var(--common-element-size-2x) auto;
 }
 
-/* Common Elements */
-p {
+p:not(:first-child) {
     margin-top: var(--common-element-size);
 }
 
@@ -80,27 +90,30 @@ hr {
 
 /* Links */
 a {
+    color: var(--text-color);
+    text-decoration-color: transparent; /* For compatibility, keep decoration but hide it */
     padding: 0.1em;
     border-bottom: 2px solid var(--text-color);
 
-    color: var(--text-color);
-    text-decoration-color: transparent; /* For compatibility, keep decoration but hide it. */
 }
 
-a:hover {
+a:hover, a:focus-visible {
     color: var(--text-color-opposite);
     background-color: var(--text-color);
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-    margin-top: var(--common-element-size-2x);
     line-height: var(--text-line-height);
     font-weight: 900;
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;
     hyphens: auto;
+}
+
+h1:not(:first-child), h2:not(:first-child), h3:not(:first-child), h4:not(:first-child), h5:not(:first-child), h6:not(:first-child) {
+    margin-top: var(--common-element-size-2x);
 }
 
 main h1:first-of-type {
@@ -114,7 +127,7 @@ main h1:first-of-type {
     margin: 0;
 }
 
-/* Embeddables */
+/* Embeddings */
 img, video, iframe, table, .highlight, .framed {
     max-width: 100%;
 }
@@ -143,7 +156,6 @@ table {
     border-spacing: 0;
 
     width: 100%;
-    overflow-x: auto;
 
     border-bottom: 1px solid var(--common-color-line);
     border-right: 1px solid var(--common-color-line);
@@ -167,6 +179,10 @@ th:empty {
     display: none;
 }
 
+th hr, td hr {
+    margin: var(--common-element-size-05x) 0;
+}
+
 /* Images */
 img.small-image {
     max-width: calc(var(--common-element-size) * 8);
@@ -184,23 +200,7 @@ a.title, a.title:hover {
     color: inherit;
 }
 
-/* Utilities */
-.center {
-    text-align: center;
-}
-
-.block {
-    display: block;
-}
-
-.inline {
-    display: inline;
-}
-
-.invisible {
-    display: none;
-}
-
+/* Text highlights */
 mark {
     color: var(--text-color);
     display: inline-block;
@@ -210,7 +210,7 @@ mark {
     margin: 0.05em;
 }
 
-/* Blog post list. */
+/* Blog post list */
 ul.blog-posts {
     padding: 0;
     list-style: none;
@@ -218,6 +218,7 @@ ul.blog-posts {
 
 ul.blog-posts li {
     display: table;
+    margin-top: var(--common-element-size-05x);
 }
 
 ul.blog-posts li span {
@@ -230,8 +231,8 @@ ul.blog-posts li a {
     display: inline;
 }
 
-/* Big Screen Ergonomics */
-@media (width > 1200px) {
+/* Large screen support */
+@media (min-width: 1200px) {
     nav {
         position: fixed;
         top: var(--common-element-size-2x);
@@ -249,15 +250,8 @@ ul.blog-posts li a {
     }
 }
 
-/* Printing Ergonomics */
+/* Printing support */
 @media print {
-    body {
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-        hyphens: auto;
-    }
-
     tr, th, thead, h1, h2, h3 {
         break-inside: avoid-page;
     }
@@ -272,4 +266,10 @@ ul.blog-posts li a {
     nav, #upvote-form small, .invisible-on-print {
         display: none;
     }
+}
+
+/* Compatibility */
+body {
+    /* Webkit fix for changing viewport sizes leading to different text size */
+    -webkit-text-size-adjust: 100%;
 }
