@@ -9,7 +9,7 @@
     --sidebar-width: calc(var(--common-element-size) * 10);
     --sidebar-left-margin: calc(50vw - (var(--content-width) / 2) - var(--sidebar-width) - (var(--common-element-size) * 2));
 
-    --text-font-family: 'Inter', 'DIN', 'Helvetica', 'Arial';
+    --text-font-family: 'Inter', 'Verdana';
     --text-font-size: var(--common-element-size);
     --text-blog-name-size: calc(var(--text-font-size) * 1.5);
     --text-title-size: calc(var(--text-font-size) * 3);
@@ -26,7 +26,7 @@
     --infobox-border-color: rgba(114, 188, 255, 0.6);
 }
 
-@media (min-width: 1400px) {
+@media (width > 1200px) {
     :root {
         --text-title-size: calc(var(--text-font-size) * 4);
     }
@@ -229,7 +229,7 @@ ul.blog-posts li span {
 }
 
 /* Big Screen Ergonomics */
-@media (width > 1400px) {
+@media (width > 1200px) {
     nav {
         position: fixed;
         top: var(--common-element-size-2x);
