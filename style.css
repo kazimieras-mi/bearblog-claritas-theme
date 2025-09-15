@@ -4,24 +4,24 @@
     --common-element-size: 16px;
     --common-element-size-2x: calc(var(--common-element-size) * 2);
     --common-element-size-05x: calc(var(--common-element-size) / 2);
+    --common-color-shade: rgba(128, 128, 128, 0.075);
+    --common-color-line: rgba(128, 128, 128, 0.3);
 
     --content-width: calc(var(--common-element-size) * 45);
     --content-min-width: calc(var(--common-element-size) * 15);
+
     --sidebar-width: calc(var(--common-element-size) * 10);
     --sidebar-left-margin: calc(50vw - (var(--content-width) / 2) - var(--sidebar-width) - (var(--common-element-size) * 2));
 
     --text-font-family: 'Inter', 'Verdana';
+    --text-color: black;
+    --text-color-opposite: white;
     --text-font-size: var(--common-element-size);
     --text-blog-name-size: calc(var(--text-font-size) * 1.5);
     --text-title-size: calc(var(--text-font-size) * 3);
     --text-spacing: calc(var(--common-element-size) / 20);
     --text-line-height: calc(1em + var(--common-element-size));
     --text-line-height-scaleable: 1.8em;
-
-    --text-color: black;
-    --text-color-opposite: white;
-    --common-color-shade: rgba(128, 128, 128, 0.075);
-    --common-color-line: rgba(128, 128, 128, 0.3);
 
     --infobox-background-color: rgba(114, 188, 255, 0.25);
     --infobox-border-color: rgba(114, 188, 255, 0.6);
@@ -201,7 +201,7 @@ a.title, a.title:hover {
     display: none;
 }
 
-p mark, .infobox-inline {
+mark, .infobox {
     color: var(--text-color);
     display: inline-block;
     background-color: var(--infobox-background-color);
