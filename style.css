@@ -11,11 +11,11 @@
 
 /* Config */
 :root {
-    --text-font-family: 'Inter', 'Verdana';
+    --text-font-family: 'Inter', 'Verdana', system-ui;
     --light-theme-text-color: black;
     --light-theme-text-color-opposite: white;
     --dark-theme-text-color: white;
-    --dark-theme-text-color-opposite: #171717;
+    --dark-theme-text-color-opposite: rgb(23, 23, 23);
 }
 
 /* Internal Variables */
@@ -238,7 +238,7 @@ ul.blog-posts li a {
         top: var(--common-element-size-2x);
         left: var(--sidebar-left-margin);
         width: var(--sidebar-width);
-        height: calc(100vh - (var(--common-element-size-2x) * 2));
+        height: calc(100vh - (var(--common-element-size) * 4));
         overflow-y: auto;
     }
 
@@ -253,6 +253,7 @@ ul.blog-posts li a {
 /* Printing support */
 @media print {
     tr, th, thead, h1, h2, h3 {
+        -webkit-column-break-inside: avoid;
         break-inside: avoid-page;
         page-break-inside: avoid;
     }
