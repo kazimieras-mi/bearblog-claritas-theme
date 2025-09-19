@@ -97,7 +97,7 @@ a {
 
 }
 
-a:hover, a:focus-visible {
+a:hover, a:focus, a:focus-visible {
     color: var(--text-color-opposite);
     background-color: var(--text-color);
 }
@@ -254,6 +254,7 @@ ul.blog-posts li a {
 @media print {
     tr, th, thead, h1, h2, h3 {
         break-inside: avoid-page;
+        page-break-inside: avoid;
     }
 
     h1::after, h2::after, h3::after {
