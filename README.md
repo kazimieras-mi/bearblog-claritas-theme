@@ -1,6 +1,8 @@
 # Bearblog Claritas Theme
 A minimalistic and accessible theme for [Bearblog](https://bearblog.dev/).
 
+Claritas is now built into Bearblog and can be selected in the theme page.
+
 ## Features
 - Strict, geometric proportions
 - Pretty good accessibility
@@ -26,6 +28,8 @@ A minimalistic and accessible theme for [Bearblog](https://bearblog.dev/).
 Open [style.css](https://raw.githubusercontent.com/kazimieras-mi/bearblog-claritas-theme/refs/heads/main/style.css) and copy the contents into the "Edit theme CSS" box in Bearblog themes page.
 
 Remember to back up your existing theme.
+
+> Note: Claritas is now built into Bearblog and can be simply selected in the theme page.
 
 ## Image Hacks
 Bearblog supports `<img src='...' />` tags for image embedding. You can use the following image classes with this theme:
